@@ -170,9 +170,10 @@ $(document).ready(function () {
     const pages_switch = () => {
         switch (global.page) {
             case '/':
+                console.log(global.page)
                 play_sound()
             break;
-            case '/game.html':
+            case 'https://deanophp.github.io/trivia//game.html':
                 start_game()
             break;
             default:
