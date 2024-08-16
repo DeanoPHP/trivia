@@ -169,16 +169,14 @@ $(document).ready(function () {
     
     const pages_switch = () => {
         switch (global.page) {
-            case '/':
-                console.log(global.page)
+            case '/trivia/':
                 play_sound()
             break;
-            case 'https://deanophp.github.io/trivia//game.html':
+            case '/trivia/game.html':
                 start_game()
             break;
             default:
                 console.log(global.page)
-                console.log('mugs life')
         }
     }
 
