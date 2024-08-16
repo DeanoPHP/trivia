@@ -163,7 +163,7 @@ $(document).ready(function () {
 
         // Redirect the user back to index 
         setTimeout(() => {
-            window.location.href = '/'
+            window.location.href = 'https://deanophp.github.io/trivia/'
         }, 4000)
     }
     
