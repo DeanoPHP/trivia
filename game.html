@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div id="logo">Logo</div>
+        <div id="settings-icon"></div>
+    </nav>
+
+    <main>
+        <h1>Question</h1>
+        <div id="question-area"></div>
+        <div id="question-choices-area">
+            <h1>Choose one answer</h1>
+            <button class="choice-btn" data-choice="A"></button>
+            <button class="choice-btn" data-choice="B"></button>
+            <button class="choice-btn" data-choice="C"></button>
+            <button class="choice-btn" data-choice="D"></button>
+            
+            <audio id="correctSound" src="audio/correct.mp3" preload="auto"></audio>
+            <audio id="incorrectSound" src="audio/incorrectSound.mp3" preload="auto"></audio>
+        </div>
+        <div id="score-area">
+            <p>Score: <span id="score"></span></p>
+        </div>
+        <div id="three-incorrect-answers-crosses">
+            <div class="cross-box"></div>
+            <div class="cross-box"></div>
+            <div class="cross-box"></div>
+        </div>
+        <div id="game-over">
+            <h1>Game Over</h1>
+            <p>You did well, Your score was <span id="user_score"></span>. Try again</p>  
+            <audio id="end-game" src="audio/game-over.mp3" preload="auto"></audio>  
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
