@@ -112,6 +112,8 @@ $(document).ready(function () {
 
     const show_incorrect_answer_crosses = () => {
         const crossbox = $('.cross-box');
+
+        window.location.href = 'https://deanophp.github.io/trivia/game.html#three-incorrect-answers-crosses'
         
         if (global.incorrect < crossbox.length) {
             $(crossbox[global.incorrect]).css({

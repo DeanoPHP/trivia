@@ -66,7 +66,7 @@ body {
 }
 
 /* -------------------------------------- game.html */
-nav {
+/* nav {
     width: 100vw;
     height: 60px;
     padding: 0 10px;
@@ -82,7 +82,7 @@ nav {
     background-image: url('images/settings.png');
     background-size: 50px 50px;
     background-repeat: no-repeat;
-}
+} */
 
 main {
     max-width: 1000px;
