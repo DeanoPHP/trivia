@@ -177,7 +177,7 @@ $(document).ready(function () {
                 start_game()
             break;
             default:
-                console.log('WTF')
+                console.log(global.page)
         }
     }
 
