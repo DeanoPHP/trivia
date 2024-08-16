@@ -178,6 +178,7 @@ $(document).ready(function () {
             break;
             default:
                 console.log(global.page)
+                console.log('mugs life')
         }
     }
 
