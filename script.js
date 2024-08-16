@@ -27,6 +27,7 @@ $(document).ready(function () {
     }
 
     const start_game = async () => {
+        window.location.href = 'https://deanophp.github.io/trivia/game.html#question-area'
         $('#score').text(global.score);
 
         // Reset the buttons to their default state
