@@ -1,8 +1,9 @@
 $(document).ready(function () {
     const global = {
-        page: window.location.pathname,
+        url: 'https://deanophp.github.io/trivia/', // https://deanophp.github.io/trivia/
+        pathname: window.location.pathname,
         score: 0,
-        incorrect: 0
+        incorrect: 0,
     }
 
     const play_sound = () => {
@@ -27,10 +28,11 @@ $(document).ready(function () {
     }
 
     const start_game = async () => {
-        window.location.href = 'https://deanophp.github.io/trivia/game.html#question-area'
+        window.location.href = `${global.url}game.html#question-area`
         $('#score').text(global.score);
 
         // Reset the buttons to their default state
+        // Using disabled, false allows the button to be clickable again
         $('.choice-btn').each(function() {
             $(this).css({
                 background: '#fafafa',
@@ -58,17 +60,11 @@ $(document).ready(function () {
         check_answer(correctAnswer)
     }
 
-    const setting_to_storage = () => {
-        // current question, score, incorrectAnswers, top score
-    }
-
-    const getFromLocalStorage = () => {
-
-    }
-
     const check_answer = (correctAnswer) => {
+        // .off('click') removes any existing click events
+        // .on('click') attaches a new event to the btn
+        // .prop('disabled': true) means the button is disabled
         $('.choice-btn').off('click').on('click', function() {
-            // Disable all buttons after one is clicked
 
             $('.choice-btn').off('click').prop('disabled', true);
     
@@ -114,7 +110,7 @@ $(document).ready(function () {
     const show_incorrect_answer_crosses = () => {
         const crossbox = $('.cross-box');
 
-        window.location.href = 'https://deanophp.github.io/trivia/game.html#three-incorrect-answers-crosses'
+        window.location.href = `${global.url}game.html#three-incorrect-answers-crosses`
         
         if (global.incorrect < crossbox.length) {
             $(crossbox[global.incorrect]).css({
@@ -149,6 +145,19 @@ $(document).ready(function () {
         } 
     }
 
+    const setting_to_storage = (score) => {
+        let get_from_storage = getFromLocalStorage()
+
+        if (score > get_from_storage) {
+            localStorage.setItem('score', score)
+        }
+    }
+
+    const getFromLocalStorage = () => {
+        const result = JSON.parse(localStorage.getItem('score'))
+        return result
+    }
+
     const game_over = () => {
         // Get the div that is going to display the message
         $('#game-over').css({
@@ -160,18 +169,27 @@ $(document).ready(function () {
         // display a message to the user saying well done and display the users score
         $('#user_score').text(global.score)
 
+        // setting the score in local storage
+        const highest_score = global.score
+        setting_to_storage(highest_score)
+
+        // display the user highest score sor far
+        const highest_recorded_score = getFromLocalStorage()
+        console.log(highest_recorded_score)
+        $('#highest-score').text(highest_recorded_score)
+        
         // set the score and all setting from above back to start game settings. Maybe put this in a function of its own
         global.score = 0
         global.incorrect = 0;
 
         // Redirect the user back to index 
         setTimeout(() => {
-            window.location.href = 'https://deanophp.github.io/trivia/'
+            window.location.href = global.url
         }, 4000)
     }
     
     const pages_switch = () => {
-        switch (global.page) {
+        switch (global.pathname) {
             case '/trivia/':
                 play_sound()
             break;
@@ -179,9 +197,10 @@ $(document).ready(function () {
                 start_game()
             break;
             default:
-                console.log(global.page)
+                console.log('Something has gone wrong')
         }
     }
 
     pages_switch()
 })
+
